@@ -25,15 +25,17 @@ client.connect((error) => {
 
 
 //skapa tabell
-// client.query(`
-//     CREATE TABLE courses(
-//         id SERIAL PRIMARY KEY,
-//         code VARCHAR(15) NOT NULL,
-//         name VARCHAR(100) NOT NULL,
-//         progression VARCHAR(1) NOT NULL,
-//         syllabus VARCHAR(300) NOT NULL
-//     )
-// `);
+//name gick inte att använda (gav felmeddelande) så uppdaterade det till coursename
+client.query(`
+    DROP TABLE IF EXISTS courses;
+    CREATE TABLE courses(
+        id SERIAL PRIMARY KEY,
+        code VARCHAR(15) NOT NULL,
+        coursename VARCHAR(100) NOT NULL,
+        progression VARCHAR(1) NOT NULL,
+        syllabus VARCHAR(300) NOT NULL
+    )
+`);
 
 // client.query(`
 //     CREATE TABLE guestbook(

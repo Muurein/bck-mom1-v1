@@ -35,7 +35,16 @@ client.connect((error) => {
 //Routing
 //Startisda
 app.get("/", async(req, res) => {
-    res.render("index");
+    //Läs ut data från databasen
+    client.query("SELECT * FROM courses", (error, addedCourse) => {
+        if(error) {
+            console.log("Fel vid utläsning av data");
+        } else {
+            res.render("index", {
+                courses: addedCourse.rows
+            });
+        }
+    })
 });
 
 app.get("form", async(req, res) => {
@@ -46,6 +55,22 @@ app.get("about", (req, res) => {
     res.render("about");
 });
 
+//skicka formulärets data
+app.post("/", async(req, res) => {
+    const code = req.body.code;
+    const coursename = req.body.coursename;
+    const progression = req.body.progression;
+    const syllabus = req.body.syllabus;
+
+    //SQL-fråga
+    const addedCourse = await client.query(`INSERT INTO courses(code, coursename, progression, syllabus) VALUES($1, $2, $3, $4)`,
+        [code, coursename, progression, syllabus]
+    );
+
+    res.redirect("/");
+
+}) //allt som vi tar emot i formuläret ska vi skicka till hemsidan
+//förelänging 01:15:26
 
 //Starta servern
 app.listen(process.env.PORT, () => {

@@ -9,5 +9,35 @@
 </head>
 <body>
     <h1>Moment 1</h1>
+
+    <!--själva formuläret ska sedan flyttas till "form"-sidan-->
+    <h2>Lägg till kurs</h2>
+
+    <form method="post" action="/"> <!--get är defualt, så skriver man inget blir metoden get, anropa en annan sida "/sidnamn"-->
+        <label for="code">Kurskod:</label>
+        <br>
+        <input id="code" name="code">
+        <br>
+        <label for="coursename">Kursnamn:</label>
+        <br>
+        <input id="coursename" name="coursename">
+        <br>
+        <label for="progression">Kursprogression:</label>
+        <br>
+        <input id="progression" name="progression">
+        <br>
+        <label for="syllabus">Kursplan:</label>
+        <br>
+        <input id="syllabus" name="syllabus">
+        <br>
+        <input type="submit" value="Lägg till kurs">
+    </form>
+
+    <h2>Tillagda kurser:</h2>
+    <article>
+        <% courses.forEach((course) =>  { %>
+            <p><%= course %></p>
+        <% }) %>
+    </article>
 </body>
 </html>
