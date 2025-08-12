@@ -45,18 +45,22 @@ app.get("/", async(req, res) => {
             });
         }
     })
+
 });
 
-app.get("form", async(req, res) => {
+// varken form-sidan eller about-sidan fungerade, men något på Stack Overflow nämnde att det kunde fungera om man tog bort piloperatorn (det funakde)
+app.get("/form", function async(req, res) {
     res.render("form");
-})
+});
 
-app.get("about", (req, res) => {
+app.get("/about", function(req, res) {
     res.render("about");
 });
 
 //skicka formulärets data
-app.post("/", async(req, res) => {
+app.post("/form", async(req, res) => {
+    
+    //Lägg till kurs
     const code = req.body.code;
     const coursename = req.body.coursename;
     const progression = req.body.progression;
@@ -67,10 +71,27 @@ app.post("/", async(req, res) => {
         [code, coursename, progression, syllabus]
     );
 
-    res.redirect("/");
+    res.redirect("/form");
 
 }) //allt som vi tar emot i formuläret ska vi skicka till hemsidan
 //förelänging 01:15:26
+
+app.post("/delete", async(req, res) => {
+    //hämta id:t till den kurs som ska raders
+    const id = req.body.deleteItemId;
+
+    try {
+        //ta bort kursen från databasen
+        await client.query(`DELETE FROM courses WHERE id = $1`,
+            [id]
+        ); 
+    } catch (error) {
+            console.log("Fel vid radering av data");
+    }
+    
+    //låt användaren komma tillbaka till startsidan
+    res.redirect("/");
+});
 
 //Starta servern
 app.listen(process.env.PORT, () => {

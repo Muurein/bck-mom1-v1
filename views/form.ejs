@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="sv">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,8 +8,48 @@
     <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
-    <h1>Kursformulär</h1>
 
+    <div class="logo">
+        <h1>Moment 1</h1>
+    </div>
+
+    <header>
+        <nav>
+            <ul>
+                <li><a href="/">Startsida</a></li>
+                <li class="current-location"><a href="/form">Lägg till kurser</a></li>
+                <li><a href="/about">Om sidan</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    
+    <main>
+        <!--själva formuläret ska sedan flyttas till "form"-sidan-->
+        <h2>Lägg till kurs</h2>
+
+        <form method="post" action="/form"> <!--get är defualt, så skriver man inget blir metoden get, anropa en annan sida "/sidnamn"-->
+            <label for="code">Kurskod:</label>
+            <br>
+            <input id="code" name="code">
+            <br>
+            <label for="coursename">Kursnamn:</label>
+            <br>
+            <input id="coursename" name="coursename">
+            <br>
+            <label for="progression">Kursprogression (A eller B):</label>
+            <br>
+            <input id="progression" name="progression">
+            <br>
+            <label for="syllabus">Kursplan:</label>
+            <br>
+            <input id="syllabus" name="syllabus">
+            <br>
+            <input type="submit" value="Lägg till kurs">
+        </form>
+
+        <p>Se dina tillagda kurser på <a href="/">startsidan!</a></p> <!--färglägg!-->
+    </main>
 
 </body>
 </html>

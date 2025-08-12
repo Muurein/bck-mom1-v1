@@ -3,41 +3,41 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Moment 1</title>
+    <title>Moment 1 - Startsida</title>
 
     <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
-    <h1>Moment 1</h1>
 
-    <!--själva formuläret ska sedan flyttas till "form"-sidan-->
-    <h2>Lägg till kurs</h2>
+    <div class="logo">
+        <h1>Moment 1</h1>
+    </div>
 
-    <form method="post" action="/"> <!--get är defualt, så skriver man inget blir metoden get, anropa en annan sida "/sidnamn"-->
-        <label for="code">Kurskod:</label>
-        <br>
-        <input id="code" name="code">
-        <br>
-        <label for="coursename">Kursnamn:</label>
-        <br>
-        <input id="coursename" name="coursename">
-        <br>
-        <label for="progression">Kursprogression:</label>
-        <br>
-        <input id="progression" name="progression">
-        <br>
-        <label for="syllabus">Kursplan:</label>
-        <br>
-        <input id="syllabus" name="syllabus">
-        <br>
-        <input type="submit" value="Lägg till kurs">
-    </form>
+    <header>
+        <nav>
+            <ul>
+                <li class="current-location"><a href="/">Startsida</a></li>
+                <li><a href="/form">Lägg till kurser</a></li>
+                <li><a href="/about">Om sidan</a></li>
+            </ul>
+        </nav>
+    </header>
 
-    <h2>Tillagda kurser:</h2>
-    <article>
-        <% courses.forEach((course) =>  { %>
-            <p><%= course %></p>
-        <% }) %>
-    </article>
+    <main>
+        <h1>Tillagda kurser:</h1>
+        <button>Sortera efter kursnamn</button>
+        <!--i server.js
+            client.query("SELECT * FROM courses ORDER BY coursename DESC" och sen hela error biten)    
+        -->
+        <article>
+            <% courses.forEach((course) =>  { %>
+                <h2><%= course.coursename %></h2>
+                <p>Kurskod:<%= course.code %></p>
+                <p>Kursprogression: <%= course.progression %></p>
+                <p>Kursplan: <%= course.syllabus %></p>
+            <% }) %>
+            <button class="delete-button" type="submit" name="delete" **value="<& course[i] %>"**>Ta bort kurs</button>
+        </article>
+    </main>
 </body>
 </html>

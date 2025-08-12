@@ -1,13 +1,44 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="sv">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Moment 1 - Om sidan</title>
+
+    <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
-    <h1>???</h1>
 
-    <h2>Slutsatser</h2>
+    <div class="logo">
+        <h1>Moment 1</h1>
+    </div>
+
+    <header>
+        <nav>
+            <ul>
+                <li><a href="/">Startsida</a></li>
+                <li class="current-location"><a href="/form">Lägg till kurser</a></li>
+                <li><a href="/about">Om sidan</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <h2>Om sidan</h2>
+        <p>
+            Denna webbplats låter användare skriva in kurser (obligatorisk info: kurskod, kursnamn, kursprogression och länk till kursplanen) i ett formulär som webbplatsen sedan sparar i en 
+            databas och publicerar på webbplatsens startsida. Väl på startsidan kan användaren sortera kurserna efter deras kursnamn samt radera kurser efter behov. 
+        </p>
+
+        <p>Webbplatsens databas använder sig av Render och Postgres för att lagra datan och databasiställningarna sparas i en env-fil. Node.js, express och ejs används för att bygga upp 
+            webbplatsen. 
+        </p>
+        
+        <h3>Slutsatser</h3>
+        <p>
+            Det är roligt att ha börjat titta på baksidan av den utveckling vi lärt oss. Att man kan göra samma sak på så många olika sätt är väldigt intressant!
+        </p>
+    </main>
+
 </body>
 </html>

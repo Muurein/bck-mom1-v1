@@ -33,7 +33,8 @@ client.query(`
         code VARCHAR(15) NOT NULL,
         coursename VARCHAR(100) NOT NULL,
         progression VARCHAR(1) NOT NULL,
-        syllabus VARCHAR(300) NOT NULL
+        syllabus VARCHAR(300) NOT NULL,
+        added_at TIMESTAMP
     )
 `);
 

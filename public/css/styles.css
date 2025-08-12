@@ -1,8 +1,81 @@
 body {
-    max-width: 450px;
+    max-width: 70%;
     width: 100%;
     height: auto;
     font-family: Verdana, Geneva, Tahoma, sans-serif;
-    font-size: 1.2em;
-    margin-left: 20em;
+    font-size: 1.1em;
+    margin: auto auto;
+    background-color: #FAF9EE;
+    /*
+    green: #A2AF9B
+    beige: #DCCFC0
+    grey: #EEEEEE
+    */
+}
+
+.logo {
+    background-color: #A2AF9B;
+    color: white;
+    text-align: center;
+    margin: auto auto;
+    padding: 1.2em;
+    border-bottom-left-radius: 25px;
+    border-bottom-right-radius: 25px;
+}
+
+header {
+    width: 100%;
+    height: auto;
+    text-align: center;
+    margin: auto auto;
+    padding: 1.2em;
+    border-radius: 25px;
+    margin-left: -18%;
+}
+
+ul {
+    list-style-type: none;
+}
+
+
+.current-location {
+    color: white;
+    text-decoration: underline 2px;
+}
+
+li {
+    margin-top: 1em;
+    background-color: #867d74;
+    color: white;
+    width: 100%;
+    height: auto;
+    padding: 0.8em;  /* PROBLEMET?????????? */
+    border-radius: 25px;
+}
+
+a {
+    text-decoration: none;
+    text-align: center;
+}
+
+
+li:hover {
+    background-color: #A2AF9B;
+    cursor: pointer;
+}
+
+a:visited {
+    color: white;
+}
+
+
+main {
+    background-color: black;
+    color: white;
+    border-radius: 25px;
+    width: 80%;
+    height: auto;
+    padding: 1.8em;
+    margin-left: auto;
+    margin-right: auto;
 }
