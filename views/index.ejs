@@ -23,21 +23,48 @@
         </nav>
     </header>
 
-    <main>
+    <main class="main-courses">
         <h1>Tillagda kurser:</h1>
-        <button>Sortera efter kursnamn</button>
+        <button id="sortButton">Sortera efter kursnamn</button>
         <!--i server.js
             client.query("SELECT * FROM courses ORDER BY coursename DESC" och sen hela error biten)    
         -->
-        <article>
-            <% courses.forEach((course) =>  { %>
-                <h2><%= course.coursename %></h2>
-                <p>Kurskod:<%= course.code %></p>
-                <p>Kursprogression: <%= course.progression %></p>
-                <p>Kursplan: <%= course.syllabus %></p>
-            <% }) %>
-            <button class="delete-button" type="submit" name="delete" **value="<& course[i] %>"**>Ta bort kurs</button>
-        </article>
+        <div class="show-courses">
+            <!-- <article>
+                <% courses.forEach((course) =>  { %>
+                    <h2><%= course.coursename %></h2>
+                    <br class="break-desktop">
+                    <p>Kurskod:<%= course.code %></p>
+                    <p>Kursprogression: <%= course.progression %></p>
+                    <p>Kursplan: <%= course.syllabus %></p>
+                <% }) %>
+                <button class="delete-button" type="submit" name="delete" **value="<& course[i] %>"**>Ta bort kurs</button> <!--varför dyker den inte upp efter varje kurs? Vill ta bort specifik kurs-->
+            </article> 
+
+            <table>
+                <tr>
+                    <th>Kurskod</th>
+                    <th>Kursnamn</th>
+                    <th>Kursprogression</th>
+                    <th>Kurplan</th>
+                </tr>
+                 <% courses.forEach((course) => { %>
+                <tr>
+                        <td><%= course.code %></td>
+                        <td><%= course.coursename %></td>
+                        <td><%= course.progression %></td>
+                        <td><%= course.syllabus %></td>
+                    <% }) %>
+                    <!--får knappen ens vara här???-->
+                    <button class="delete-button" type="submit" name="delete" **value="<& course[i] %>"**>Ta bort kurs</button> <!--varför dyker den inte upp efter varje kurs? Vill ta bort specifik kurs-->
+                </tr>
+            </table>
+        </div>
     </main>
+
+    <footer>
+        <p>Amanda Thim - amth2302</p>
+    </footer>
+    
 </body>
 </html>

@@ -29,27 +29,42 @@
         <h2>Lägg till kurs</h2>
 
         <form method="post" action="/form"> <!--get är defualt, så skriver man inget blir metoden get, anropa en annan sida "/sidnamn"-->
-            <label for="code">Kurskod:</label>
-            <br>
-            <input id="code" name="code">
-            <br>
-            <label for="coursename">Kursnamn:</label>
-            <br>
-            <input id="coursename" name="coursename">
-            <br>
-            <label for="progression">Kursprogression (A eller B):</label>
-            <br>
-            <input id="progression" name="progression">
-            <br>
-            <label for="syllabus">Kursplan:</label>
-            <br>
-            <input id="syllabus" name="syllabus">
-            <br>
-            <input type="submit" value="Lägg till kurs">
+            <!--Kurskod-->
+            <div>
+                <label for="code">Kurskod:</label>
+                <br>
+                <input id="code" name="code">
+                <br>
+            </div>
+            <!--Kursnamn-->
+            <div>
+                <label for="coursename">Kursnamn:</label>
+                <br>
+                <input id="coursename" name="coursename">
+                <br>
+            </div>
+            <div>
+                <label for="progression">Kursprogression (A eller B):</label>
+                <br>
+                <input id="progression" name="progression">
+                <br>
+            </div>
+            <div>
+                <label for="syllabus">Kursplan:</label>
+                <br>
+                <input id="syllabus" name="syllabus">
+                <br>
+            </div>
+            <p id="enterField"></p>
+            <input id="addCourseButton" type="submit" value="Lägg till kurs">
         </form>
 
-        <p>Se dina tillagda kurser på <a href="/">startsidan!</a></p> <!--färglägg!-->
+        <p class="user-message">Se dina tillagda kurser på <a  href="/"><span class="hidden-link">startsidan!</span></a></p> <!--färglägg!-->
     </main>
+
+    <footer>
+        <p>Amanda Thim - amth2302</p>
+    </footer>
 
 </body>
 </html>

@@ -42,10 +42,18 @@ app.get("/", async(req, res) => {
         } else {
             res.render("index", {
                 courses: addedCourse.rows
+
             });
         }
     })
+    // //sortera kurserna
+    // const sortButtonEl = document.getElementById("sortButton");
 
+    // sortButtonEl.addEventListener("click", sortCourses());
+
+    // function sortCourses() {
+    //     client.query(`SELECT * FROM courses ORDER BY coursename DESC`);
+    // }
 });
 
 // varken form-sidan eller about-sidan fungerade, men något på Stack Overflow nämnde att det kunde fungera om man tog bort piloperatorn (det funakde)
@@ -70,6 +78,23 @@ app.post("/form", async(req, res) => {
     const addedCourse = await client.query(`INSERT INTO courses(code, coursename, progression, syllabus) VALUES($1, $2, $3, $4)`,
         [code, coursename, progression, syllabus]
     );
+
+    //Felmeddelanden
+    //Hämtar variabler
+    // const enterFieldEl = document.getElementById("enterField");
+    // const addCourseButtonEl = document.getElementById("addCourseButton");
+    // //om användare lämnat ett fält tomt
+    // if (code <= 0 || coursename <= 0 || progression <= 0 || syllabus <= 0) {
+
+    //     errorCodeEl.innerHTML = "Vänligen fyll i alla fält";
+    //     addCourseButtonEl.disable = true;
+
+    // } else if(code > 0 || coursename > 0 || progression > 0 || syllabus > 0) {
+
+    //     addCourseButtonEl.disable = false;
+    // }
+
+
 
     res.redirect("/form");
 
