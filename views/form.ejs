@@ -15,7 +15,7 @@
 
     <header>
         <nav>
-            <ul>
+            <ul class="menu">
                 <li><a href="/">Startsida</a></li>
                 <li class="current-location"><a href="/form">Lägg till kurser</a></li>
                 <li><a href="/about">Om sidan</a></li>
@@ -27,35 +27,44 @@
     <main>
         <!--själva formuläret ska sedan flyttas till "form"-sidan-->
         <h2>Lägg till kurs</h2>
-
+            <% if (locals.errors.length > 0) { %>
+                <ul>
+                    <% errors.forEach((error) => { %>
+                        <li><%= error %></li>
+                    <% }) %>
+                </ul>
+            <% } %>
         <form method="post" action="/form"> <!--get är defualt, så skriver man inget blir metoden get, anropa en annan sida "/sidnamn"-->
             <!--Kurskod-->
             <div>
                 <label for="code">Kurskod:</label>
                 <br>
-                <input id="code" name="code">
+                <input type="text" id="code" name="code" value="<%= code %>">
                 <br>
             </div>
             <!--Kursnamn-->
             <div>
                 <label for="coursename">Kursnamn:</label>
                 <br>
-                <input id="coursename" name="coursename">
+                <input type="text" id="coursename" name="coursename" value="<%= coursename %>">
                 <br>
             </div>
+            <!--progression-->
             <div>
                 <label for="progression">Kursprogression (A eller B):</label>
                 <br>
-                <input id="progression" name="progression">
+                <input type="text" id="progression" name="progression" value="<%= progression %>">
                 <br>
             </div>
+            <!--syllabus-->
             <div>
                 <label for="syllabus">Kursplan:</label>
                 <br>
-                <input id="syllabus" name="syllabus">
+                <input type="text" id="syllabus" name="syllabus" value="<%= syllabus %>">
                 <br>
             </div>
             <p id="enterField"></p>
+
             <input id="addCourseButton" type="submit" value="Lägg till kurs">
         </form>
 

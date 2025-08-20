@@ -10,12 +10,12 @@
 <body>
 
     <div class="logo">
-        <h1>Moment 1</h1>
+        <h1>CV</h1>
     </div>
 
     <header>
         <nav>
-            <ul>
+            <ul class="menu">
                 <li class="current-location"><a href="/">Startsida</a></li>
                 <li><a href="/form">Lägg till kurser</a></li>
                 <li><a href="/about">Om sidan</a></li>
@@ -24,7 +24,7 @@
     </header>
 
     <main class="main-courses">
-        <h1>Tillagda kurser:</h1>
+        <h1>Kurser som jag har läst:</h1>
         <button id="sortButton">Sortera efter kursnamn</button>
         <!--i server.js
             client.query("SELECT * FROM courses ORDER BY coursename DESC" och sen hela error biten)    
@@ -47,6 +47,7 @@
                     <th>Kursnamn</th>
                     <th>Kursprogression</th>
                     <th>Kurplan</th>
+                    <th>Ta bort kurs</th>
                 </tr>
                  <% courses.forEach((course) => { %>
                 <tr>
@@ -54,9 +55,10 @@
                         <td><%= course.coursename %></td>
                         <td><%= course.progression %></td>
                         <td><%= course.syllabus %></td>
+                        <td>
+                            <form method="post" action="/delete"><button class="delete-button" type="submit" name="deleteItemId" value="<%= course.id %>">Ta bort kurs</button></form>
+                        </td>
                     <% }) %>
-                    <!--får knappen ens vara här???-->
-                    <button class="delete-button" type="submit" name="delete" **value="<& course[i] %>"**>Ta bort kurs</button> <!--varför dyker den inte upp efter varje kurs? Vill ta bort specifik kurs-->
                 </tr>
             </table>
         </div>

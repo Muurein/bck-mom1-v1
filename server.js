@@ -58,7 +58,14 @@ app.get("/", async(req, res) => {
 
 // varken form-sidan eller about-sidan fungerade, men något på Stack Overflow nämnde att det kunde fungera om man tog bort piloperatorn (det funakde)
 app.get("/form", function async(req, res) {
-    res.render("form");
+    //skickar med en tom array för att inte skicka med några errors när formuläret inte skickats
+    res.render("form", {
+        errors: [],
+        code: "",
+        coursename: "",
+        progression: "",
+        syllabus: ""
+    });
 });
 
 app.get("/about", function(req, res) {
@@ -67,40 +74,51 @@ app.get("/about", function(req, res) {
 
 //skicka formulärets data
 app.post("/form", async(req, res) => {
-    
+
     //Lägg till kurs
     const code = req.body.code;
     const coursename = req.body.coursename;
     const progression = req.body.progression;
     const syllabus = req.body.syllabus;
 
-    //SQL-fråga
-    const addedCourse = await client.query(`INSERT INTO courses(code, coursename, progression, syllabus) VALUES($1, $2, $3, $4)`,
+    let errors = [];
+
+    //felmeddelanden 
+    if ( code === "" || coursename === "" || progression === "" || syllabus === "" ) {
+        errors.push("Vänligen fyll i alla fält");
+    }
+    
+    if ( !["A", "a", "B", "b"].includes(progression) ) {
+        errors.push("Vänligen skriv in ett a eller ett b");
+    } 
+    
+
+
+
+
+    //hantera sidan på olika sätt beroende på om errors förekommer eller inte
+    if (errors.length > 0) {
+        res.render("form", { 
+            errors: errors,
+            code: code,
+            coursename: coursename,
+            progression: progression,
+            syllabus: syllabus
+        });
+    } else {
+        //SQL-fråga
+        await client.query(`INSERT INTO courses(code, coursename, progression, syllabus) VALUES($1, $2, $3, $4)`,
         [code, coursename, progression, syllabus]
-    );
+        );
+        res.redirect("/form");
+    }; 
+});
 
-    //Felmeddelanden
-    //Hämtar variabler
-    // const enterFieldEl = document.getElementById("enterField");
-    // const addCourseButtonEl = document.getElementById("addCourseButton");
-    // //om användare lämnat ett fält tomt
-    // if (code <= 0 || coursename <= 0 || progression <= 0 || syllabus <= 0) {
-
-    //     errorCodeEl.innerHTML = "Vänligen fyll i alla fält";
-    //     addCourseButtonEl.disable = true;
-
-    // } else if(code > 0 || coursename > 0 || progression > 0 || syllabus > 0) {
-
-    //     addCourseButtonEl.disable = false;
-    // }
-
-
-
-    res.redirect("/form");
-
-}) //allt som vi tar emot i formuläret ska vi skicka till hemsidan
+//allt som vi tar emot i formuläret ska vi skicka till hemsidan
 //förelänging 01:15:26
 
+
+//ta bort kurs
 app.post("/delete", async(req, res) => {
     //hämta id:t till den kurs som ska raders
     const id = req.body.deleteItemId;
@@ -118,7 +136,11 @@ app.post("/delete", async(req, res) => {
     res.redirect("/");
 });
 
+
 //Starta servern
 app.listen(process.env.PORT, () => {
     console.log("Servern startad på: " + process.env.PORT);
 });
+
+
+///https://www.youtube.com/watch?v=fuBa1C2CyCI&t=187s   25:10 + fråga leChat
