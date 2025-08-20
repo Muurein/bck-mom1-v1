@@ -1,0 +1,25 @@
+# Backend-baserad webbutveckling - moment 1: Server-baserad utveckling
+Uppgiften går ut på att skapa en sida som skulle kunna fungera som ett CV över vilka kurser som användaren har läst. Hen ska kunna lägga till nya kurser genom att fylla i ett formulär
+(och få felmeddelanden om infon har fyllts i felaktigt) som hen sen ska kunna se på startsidan (där kan hen också ta bort kurser).
+
+## Lösning
+En databas (skapad med PostgreSQL som hostas på Render) sparar kurserna. En env-fil lagrar informationen om databasen, men det finns även en env.sample-fil för att öka säkerheten
+men som också andra användare kan använda och fylla i sin egna information. Själva webbplatsen är annars uppbyggd med hjälp av node.js, express och ejs. 
+
+Säkerhet var ett genomgående tänk som också påverkade hur SQL-queries skrevs. 
+
+### Kursinformation
+För att lägga till en kurs behöver användaren skriva in följande information:
+  - Kurskod
+  - Kursnamn
+  - Kursprogression
+  - Kursplan
+
+Databasen lägger själv till följande info som inte skrivs ut på sidan:
+  - id
+  - datumet när kursen lades till
+
+Kurserna presenteras sedan i en tabell med en skrollfunktion då det i början ansågs vara viktigast att elementens dimensioner stämde överens. Detta gör dock tabellen svår att läsa och gör det
+svårt för användaren att få en översikt.
+
+

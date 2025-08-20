@@ -26,14 +26,8 @@
     
     <main>
         <!--själva formuläret ska sedan flyttas till "form"-sidan-->
-        <h2>Lägg till kurs</h2>
-            <% if (locals.errors.length > 0) { %>
-                <ul>
-                    <% errors.forEach((error) => { %>
-                        <li><%= error %></li>
-                    <% }) %>
-                </ul>
-            <% } %>
+        <h2>Lägg till kurs:</h2>
+
         <form method="post" action="/form"> <!--get är defualt, så skriver man inget blir metoden get, anropa en annan sida "/sidnamn"-->
             <!--Kurskod-->
             <div>
@@ -64,6 +58,14 @@
                 <br>
             </div>
             <p id="enterField"></p>
+
+                        <% if (locals.errors.length > 0) { %>
+                <ul class="errors">
+                    <% errors.forEach((error) => { %>
+                        <li><%= error %></li>
+                    <% }) %>
+                </ul>
+            <% } %>
 
             <input id="addCourseButton" type="submit" value="Lägg till kurs">
         </form>

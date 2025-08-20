@@ -14,17 +14,13 @@ body {
 }
 
 .logo {
-    background-color: #789e63; /* #A2AF9B   #9bc485  #a7a590*/
+    background-color: #789e63; /* #A2AF9B   #9bc485  #a7a590 #9e9c88*/
     color: white;
     text-align: center;
     margin: auto auto;
     padding: 1.2em;
     border-bottom-left-radius: 25px;
     border-bottom-right-radius: 25px;
-}
-
-main p, main h2, main h3, main span, main form label {
-    text-shadow: -1px 0 #9e9c88, 0 1px #9e9c88, 1px 0 #9e9c88, 0 -1px #9e9c88;
 }
 
 header {
@@ -37,6 +33,7 @@ header {
     margin-left: -18%;
 }
 
+/* main menu */
 .menu {
     list-style-type: none;
 }
@@ -47,14 +44,19 @@ header {
     text-decoration: underline 2px;
 }
 
-li {
+.menu li {
     margin-top: 1em;
     background-color: #867d74;
     color: white;
     width: 100%;
     height: auto;
-    padding: 0.8em;  /* PROBLEMET?????????? */
+    padding: 0.8em; 
     border-radius: 25px;
+}
+
+.menu li:hover {
+    background-color: #789e63;
+    cursor: pointer;
 }
 
 a {
@@ -62,17 +64,11 @@ a {
     text-align: center;
 }
 
-
-li:hover {
-    background-color: #A2AF9B;
-    cursor: pointer;
-}
-
 a:visited {
     color: white;
 }
 
-
+/* main-content */
 main {
     background-color: #adab96;
     color: white;
@@ -94,6 +90,7 @@ main {
 table {
     margin-top: 1.2em;
     padding-right: 10%;
+    text-align: center;
 }
 
 th, td {
@@ -102,9 +99,21 @@ th, td {
     padding: 0.4em;
 }
 
-.break-desktop {
-    display: none;
+.delete-button {
+    background-color: #49443f;
+    color: white;
+    border: none;
+    border-radius: 15px;
+    width: 4em;
+    height: 7em;
+    padding: 1em;
+    cursor: pointer;
 }
+
+.delete-button:hover {
+    background-color: rgb(15, 15, 15);
+}
+
 
 
 /* formulär */
@@ -124,15 +133,45 @@ form div {
     margin-bottom: 1em;
 }
 
-.user-message {
-    font-weight: 600;
+.errors {
+    list-style-type: none;
+    margin-left: -18%;
 }
 
-.hidden-link {
+.errors li {
+    margin: 0.6em;
+}
+
+.hidden-link:hover {
     text-decoration: underline;
+    color: rgb(15, 15, 15)
+}
+
+#addCourseButton {
+    background-color: #49443f;
+    color: white;
+    border: none;
+    width: 72%;
+    height: 2.3em;
+    cursor: pointer;
+    margin-bottom: 2em;
+}
+
+#addCourseButton:hover {
+    background-color: rgb(15, 15, 15);
+}
+
+/* länk till startsidan */
+.hidden-link {
     color: #49443f;
 }
 
+
+
+/* om sidan */
+.about h3 {
+    margin-top: 2.2em;
+}
 
 /* footer */
 footer {
@@ -149,6 +188,7 @@ footer {
 }
 
 
+
 /* tablet */
 @media (min-width: 600px) {
 
@@ -160,10 +200,27 @@ footer {
         width: 87%;
         padding-left: 2.8em;
     }
+
+    #addCourseButton {
+        width: 51%;
+    }
+
+
+    /* formulär */
+    .errors {
+        margin-left: -8.5%;
+    }
+
+    /* om sidan */
+    .about {
+        padding: 3em;
+    }
+
     
 }
 
 
+/* desktop */
 @media (min-width: 1024px) {
 
     .logo {
@@ -176,15 +233,19 @@ footer {
     }
 
     main {
-        width: 48%;
+        width: 46%;
     }
-
 
     /* tabell */
     table {
 
         padding-right: 0;
     }
+
+    #addCourseButton {
+        height: 2.5em;
+    }
+
 
 
     /* formulär */
@@ -193,37 +254,11 @@ footer {
     }
 
 
+
     /* footer */
     footer {
         width: 54%;
         margin-left: auto;
         margin-right: auto;
     }
-
-    /* .break-desktop {
-        display: block;
-    } */
-
-    /* .show-courses {
-        display: flex;
-        justify-content: space-evenly;
-
-    } */
-    /* .show-courses article {
-        display: flex;
-        justify-content: space-evenly;
-        flex-direction: row;
-        flex-wrap: wrap;
-    } */
-
-    /* .show-courses {
-        display: grid;
-        grid-template-columns: auto auto;
-        padding: 0.8em;
-    } */
-
-    /* .show-courses {
-        column-count: 2;
-    } */
-
 }

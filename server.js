@@ -46,14 +46,6 @@ app.get("/", async(req, res) => {
             });
         }
     })
-    // //sortera kurserna
-    // const sortButtonEl = document.getElementById("sortButton");
-
-    // sortButtonEl.addEventListener("click", sortCourses());
-
-    // function sortCourses() {
-    //     client.query(`SELECT * FROM courses ORDER BY coursename DESC`);
-    // }
 });
 
 // varken form-sidan eller about-sidan fungerade, men något på Stack Overflow nämnde att det kunde fungera om man tog bort piloperatorn (det funakde)
@@ -89,7 +81,7 @@ app.post("/form", async(req, res) => {
     }
     
     if ( !["A", "a", "B", "b"].includes(progression) ) {
-        errors.push("Vänligen skriv in ett a eller ett b");
+        errors.push("Vänligen skriv in ett 'a' eller ett 'b' i progressionsfältet");
     } 
     
 

@@ -24,23 +24,11 @@
     </header>
 
     <main class="main-courses">
-        <h1>Kurser som jag har läst:</h1>
-        <button id="sortButton">Sortera efter kursnamn</button>
-        <!--i server.js
-            client.query("SELECT * FROM courses ORDER BY coursename DESC" och sen hela error biten)    
-        -->
-        <div class="show-courses">
-            <!-- <article>
-                <% courses.forEach((course) =>  { %>
-                    <h2><%= course.coursename %></h2>
-                    <br class="break-desktop">
-                    <p>Kurskod:<%= course.code %></p>
-                    <p>Kursprogression: <%= course.progression %></p>
-                    <p>Kursplan: <%= course.syllabus %></p>
-                <% }) %>
-                <button class="delete-button" type="submit" name="delete" **value="<& course[i] %>"**>Ta bort kurs</button> <!--varför dyker den inte upp efter varje kurs? Vill ta bort specifik kurs-->
-            </article> 
+        <h2>Kurser jag har läst:</h2>
 
+        <!--område där kurserna skrivs ut-->
+        <div class="show-courses">
+            <!--tabell för kurser-->
             <table>
                 <tr>
                     <th>Kurskod</th>
